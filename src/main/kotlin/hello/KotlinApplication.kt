@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono
 
 class Solution {
     private var index = 1
-    private val test = "LTFFTFFTFFTFFRRR"
+    private val test = "LTFTFTFTRTRTRT"
 
     fun getNextStep() = test[(index++ % test.length) - 1].toString()
 }
@@ -30,12 +30,12 @@ class KotlinApplication {
         }
 
         POST("/**", accept(APPLICATION_JSON)) { request ->
-            //request.bodyToMono(ArenaUpdate::class.java).flatMap { arenaUpdate ->
-              //  println(arenaUpdate)
-                ServerResponse.ok().body(
-                    Mono.just(solution.getNextStep())
-                )
-            //}
+            // request.bodyToMono(ArenaUpdate::class.java).flatMap { arenaUpdate ->
+            //  println(arenaUpdate)
+            ServerResponse.ok().body(
+                Mono.just(solution.getNextStep())
+            )
+            // }
         }
     }
 }
